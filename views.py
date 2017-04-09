@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_app import app
 from flask import Flask, render_template,request
+from strgen import StringGenerator as SG
 
 from manager import db
 from manager import Customer
@@ -22,6 +23,26 @@ def login():
 		error = 'Invalid Credentials. Please try again.'    	
 	return render_template('login.html', error=error)
 
+
+@app.route('/createuser',methods=['GET', 'POST'])
+def createuser():
+	if request.method=='POST':
+		fn=request.form['field1']
+		ln=request.form['field2']
+		lid=request.form['field3']
+		cno=request.form['field4']
+		pwd=request.form['field5']
+		x_list=[Customer.query.all()[i].loginid for i in range(len(Customer.query.all()))]
+		c_id=SG("[\u\d]{9}").render()
+		if(fn!='' and ln!='' and cno!='' and pwd!='' and (lid not in x_list)):
+			a=Customer(id=c_id,first_name=fn,last_name=ln,loginid=lid,passwd=pwd,contact_num=cno)
+			db.session.add(a)
+			db.session.commit()
+			return render_template('success.html')
+		else:
+			return 'Failure:credentials are not filled in properly'
+	
+	return render_template('createuser.html')
 
 #z=Customer.query.filter_by(loginid='admin').all()[0].passwd
 	

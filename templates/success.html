@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Success</title>
+<style>
+.container{
+	border: 1px solid black;
+	padding: 20px;
+	position:absolute;
+	left:30%;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+	<div class="row text-center">
+        <div class="col-sm-6 col-sm-offset-3">
+        <br><br> <h2 style="color:#0fad00">Success</h2>
+        <img src="{{ url_for('static', filename='suc.jpg')}}">
+        <h3>Dear Customer</h3>
+        <p style="font-size:20px;color:#5C5C5C;">Thank you for registering with us.Login to your account to continue.</p>
+        <a href="/" class="btn btn-success">Log in</a>
+    <br><br>
+        </div>
+        
+	</div>
+</div>
+
+</body>
+</html>

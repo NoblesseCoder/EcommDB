@@ -30,7 +30,7 @@
           request.form.password }}">
           <br/><br/>
         <input class="btn btn-default" type="submit" value="Login">
-		<a href="/createuser">Create User</a>
+		<a href="\index"><button>Create User</button><a>
       </form>
       {% if error %}
         <p class="error"><strong>Error:</strong> {{ error }}
