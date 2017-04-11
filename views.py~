@@ -1,12 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_app import app
-from flask import Flask, render_template,request,session, redirect, url_for
+from flask import Flask, render_template,request
 from strgen import StringGenerator as SG
 
 from manager import db
 from manager import Customer
 
-app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -19,7 +18,7 @@ def login():
 			if(request.form['password']!=z):
 				error = 'Invalid Credentials. Please try again.'
 			else:
-				session['username']=x
+				user_name=session['username']
 				return render_template('index.html')
     
 		error = 'Invalid Credentials. Please try again.'    	
@@ -46,8 +45,5 @@ def createuser():
 	
 	return render_template('createuser.html')
 
-@app.route('/logout')
-def logout():
-    # remove the username from the session if it's there
-    session.pop('username', None)
-    return redirect(url_for('login'))
+#z=Customer.query.filter_by(loginid='admin').all()[0].passwd
+	

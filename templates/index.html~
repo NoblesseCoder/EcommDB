@@ -4,7 +4,6 @@
 	<title>Home</title>
 </head>
 <body>
-{{session['username']}}
-<a href='\logout'>Logout</a>
+{{session['user_name']}}
 </body>
 </html>

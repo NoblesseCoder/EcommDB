@@ -5,9 +5,6 @@ EcommDB allows you to buy products online and make safe payments to the supplier
 
 I made this as a part of my DBMS mini-project where we were asked to build an application so as to demonstrate the interacion of a web-application with a relational database and to perform some basic CRUD operations on the database.
 
-I haven't used sessions in this project but the real functionality would require them.In this project I simulated sessions using
-references alone.  
-
 ### The database chosen in this project is postgresql.I have used flask-sqlalchemy(an ORM) on top of it.You would have to make some changes in code if you use a different ORM or database.
 
 

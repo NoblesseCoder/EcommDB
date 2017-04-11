@@ -53,9 +53,9 @@ This is a result of flask migrate.It is an extension that handles SQLAlchemy dat
 
 #### Useful Commands-
 
-    python manager.py init
-    python manager.py migrate
-    python manager.py upgrade
+    python manager.py db init
+    python manager.py db migrate
+    python manager.py db upgrade
 
 The app has to be configured to interact with the database before any further operations.You can configure it as follows-
 
