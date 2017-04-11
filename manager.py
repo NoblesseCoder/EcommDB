@@ -4,17 +4,18 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 
 
+#configure app to enable it to interact with your database
+#format: 'postgresql://user:password@localhost/database name'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://yagami:deathnote@localhost/e_flask'
 
-
+#To maintain migrations
 db=SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
-# Database models
-
+# Database relational models based on flask-SQLAlchemy ORM syntax
 class Customer(db.Model):
 
 	__tablename__ = "customer"
@@ -161,7 +162,7 @@ class Admin(db.Model):
 	login_ID=db.Column('login_ID',db.String(20))
 	admin_pwd=db.Column('admin_pwd',db.String(20))
 
-
+#Running manager
 if __name__ == '__main__':
     manager.run()
 

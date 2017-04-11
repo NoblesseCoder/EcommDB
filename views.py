@@ -2,12 +2,16 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_app import app
 from flask import Flask, render_template,request,session, redirect, url_for
 from strgen import StringGenerator as SG
+#Here I have used strgen to geneate random IDs for my customers
 
+#The models need to be imported from manager before use for CRUD operations
 from manager import db
 from manager import Customer
 
+#set secret key for the app in order to use sessions 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
+#routing the app to the login page.(In this case this is my starting page)
 @app.route('/', methods=['GET', 'POST'])
 def login():
 	error = None
@@ -19,13 +23,13 @@ def login():
 			if(request.form['password']!=z):
 				error = 'Invalid Credentials. Please try again.'
 			else:
-				session['username']=x
+				session['username']=x #storing session variable
 				return render_template('index.html')
     
 		error = 'Invalid Credentials. Please try again.'    	
 	return render_template('login.html', error=error)
 
-
+#routing to createuser page
 @app.route('/createuser',methods=['GET', 'POST'])
 def createuser():
 	if request.method=='POST':
@@ -46,6 +50,7 @@ def createuser():
 	
 	return render_template('createuser.html')
 
+#Delete the session variable on logout
 @app.route('/logout')
 def logout():
     # remove the username from the session if it's there
