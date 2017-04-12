@@ -81,6 +81,16 @@ def cart():
 		return render_template('checkout.html')
 	return render_template('cart.html')	
 
+@app.route('/checkout',methods=['GET', 'POST'])
+def checkout():
+	if request.method=='POST':
+		session['cardno']=request.form['cardno']
+		session['addr']=request.form['addr']	
+		return render_template('end.html')
+
+	error="payment failed.Try again!"			
+	return render_template('checkout.html',error=error)	
+
 #Delete the session variable on logout
 @app.route('/logout')
 def logout():

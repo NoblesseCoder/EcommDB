@@ -28,7 +28,7 @@
 	.pay1{
 		position: absolute;
 		background-color: lightblue;
-		top:25em;
+		top:27em;
 		left:28em;
 		height:10em;
 		width: 30em;
@@ -41,10 +41,11 @@
 <span class="p1">Total-${{session['cost']}}</span>
 </div>
 <div class="pay1"></div>
-<form class="f1" action="/index" method="post">
+<form class="f1" action="/checkout" method="post">
 	Name on Card
 	<input type="text" name="Name",placeholder="Name on Card" value="{{request.form.Name}}"/><br/><br/>Card no.
-	<input type="text" name="cardno",placeholder="Card no." value="{{request.form.cardno}}"/><br/><br/>cvv
+	<input type="text" name="cardno",placeholder="Card no." value="{{request.form.cardno}}"/><br/><br/>Billing addr:
+	<input type="text" name="addr",placeholder="Address" value="{{request.form.addr}}"/><br/><br/>cvv
 	<input type="password" name="cvv",placeholder="cvv" value="{{request.form.cvv}}"/><br/><br/>
 	<input class="btn btn-default" type="submit" value="Confirm and pay">
 </form>
