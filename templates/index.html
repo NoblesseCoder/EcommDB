@@ -1,10 +1,163 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+	.body{
+	 background-repeat: no-repeat;
+	 background-size:cover;
+	}
+	.lg{
+		position: absolute;
+		right:1%;
+		font-size: 30px;
+		top:0%;
+	}
+	.cart{
+		position: absolute;
+		right:13%;
+		font-size: 30px;
+		top:0%;
+	}
+	.ca{
+		width: 140px;
+		height: 80px;
+	}
+	.cnt{
+		position: absolute;
+		right:-24em;
+		top:-15em;
+		color: white
+	}
+	.menu{
+		position: absolute;
+		top:9.8em;
+		left:21em;
+		color: white;  
+	}
+	.menu1{
+		position: absolute;
+		top:48em;
+		left:21em;
+		color: white;  
+	}
+	#name2{
+		position: absolute;
+		top:14em;
+		left:10.2em;
+		font-family: cursive;
+		font-size: 3em;	
+	}
+	.name{
+		position: absolute;
+		top:0.2em;
+		left:8.8em;
+		font-family: cursive;
+		font-size: 3em;
+	}
+	#name1{
+		position: absolute;
+		top:2.2em;
+		left:10.2em;
+		font-family: cursive;
+		font-size: 3em;	
+	}
+	.img{
+		width: 40em;
+		width: 40em;
+	}
+	.a{
+		position:absolute;
+		top:3.3em;
+		left:14em;
+		}
+	.a1{
+		position:absolute;
+		top:-13.0em;
+		left:-14.0em;
+		font-size: 1em;
+		}	
+	.f1{
+		position:relative;
+		top:6.3em;
+		left:9em;
+	}
+	.f2{
+		position:absolute;
+		top:-10em;
+		left:-20em;
+		font-size: 1em;
+	}
+	.cat1{
+		position: absolute;
+		left:1em;
+		top:8em;
+		font-size:3em;
+	}
+	.cat2{
+		position: absolute;
+		left:1em;
+		top:9em;
+		font-size:3em;
+	}	
+
+	#add{
+		position: absolute;
+		top:-49em;
+		left:36em;
+	}
+</style>
 	<title>Home</title>
 </head>
-<body>
-{{session['username']}}
-<a href='\logout'>Logout</a>
+<body background="{{ url_for('static', filename='ind1.jpg')}}" >
+<img src="{{ url_for('static', filename='logo.png')}}"/>
+<div class="name">Yukihira's Diner Menu</div>
+<div id="name1">Japanese Cuisine</div>
+<div class="cat1"><a href="#name1">Japanese</a></div>
+<div id="name2">Italian Cuisine</div>
+<div class="cat2"><a href="#name2">Italian</a></div>
+<div class="lg">
+	<strong>{{session['username']}}</strong>
+	<br/>
+	<a href='\logout'>Logout</a>
+</div>
+<div class="cart">
+	<img class="ca"src="{{ url_for('static', filename='cart.png')}}"/>
+</div>
+<div class="menu">
+	<img class="img"src="{{ url_for('static', filename='blackboard.jpg')}}"/>
+</div>
+<div class="menu1">
+	<img class="img"src="{{ url_for('static', filename='blackboard.jpg')}}"/>
+</div>
+<div class="menu">
+	<span class="a">ITADAKIMASU</span>
+
+	
+	<form class="f1" action="/index" method="post">
+		<input type="checkbox" name="food" value="csd"/>Chaliapin Steak Don-40$ per seving<br/>
+		<input type="checkbox" name="food" value="ar"/>Apple Risotto-10$ per seving<br/>
+		<input type="checkbox" name="food" value="skr"/>Sumire Karaage Roll-50$ per seving<br/>
+		<input type="checkbox" name="food" value="rp"/>Roast Pork-100$ per seving<br/>
+		<input type="checkbox" name="food" value="mso"/>Mini Soufflé Omelette-150$ per seving<br/><br/>
+		<a href="#add">Add to cart</a>
+	<div class="cnt">
+		<strong></strong>{{session['cnt']}}</strong>
+	</div>
+	<div class="menu1">
+		<span class="a1">BUONPASTO</span>
+
+	<div class="f2">
+		<input type="checkbox" name="italian" value="ba"/>Bruschetta-100$ per seving<br/><br/>
+		<input type="checkbox" name="italian" value="pa"/>Panzenella-130$ per seving<br/><br/>
+		<input type="checkbox" name="italian" value="fb"/>Focaccia Bread-150$ per seving<br/><br/>
+		<input type="checkbox" name="italian" value="pc"/>Pasta Carbonara-200$ per seving<br/><br/>
+		<input type="checkbox" name="italian" value="mr"/>Mushroom Risotto-350$ per seving<br/><br/>
+		<a href="#add">Add to cart</a>
+		<div id="add">
+		<input class="btn btn-default" type="submit" value="Add to cart">
+		</div>
+	</form>
+
+</div>
 </body>
 </html>

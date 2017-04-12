@@ -6,7 +6,7 @@ from strgen import StringGenerator as SG
 
 #The models need to be imported from manager before use for CRUD operations
 from manager import db
-from manager import Customer
+from manager import Customer,Product
 
 #set secret key for the app in order to use sessions 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
@@ -49,6 +49,37 @@ def createuser():
 			return 'Failure:credentials are not filled in properly'
 	
 	return render_template('createuser.html')
+
+
+@app.route('/index',methods=['GET', 'POST'])
+def index():
+	if request.method=='POST':
+		f=request.form.getlist('food')
+		i=request.form.getlist('italian')
+		session['food']=f
+		session['italian']=i
+		session["t_list"]=f+i
+		session['cnt']=len(session["t_list"])
+		t=f+i
+		l=[]
+		d=[]
+		for j in t:
+			l.append([Product.query.all()[i].supplier_ID for i in range(len(Product.query.all())) if Product.query.all()[i].product_name==j][0])	
+		session["t_names"]=l	
+		return render_template('cart.html')
+	return render_template('index.html')		
+
+@app.route('/cart',methods=['GET', 'POST'])
+def cart():
+	if request.method=='POST':
+		#csd=request.form['csd']
+		session['a']=session["t_list"]
+		c={'csd':40,'ar':10,'skr':50,'rp':100,'mso':150,'ba':100,'pa':130,'fb':150,'pc':200,'mr':350}
+		t=session['a']
+		session['lin']=[int(request.form[i])*int(c[i]) for i in t]
+		session['cost']=sum(session['lin'])
+		return render_template('checkout.html')
+	return render_template('cart.html')	
 
 #Delete the session variable on logout
 @app.route('/logout')

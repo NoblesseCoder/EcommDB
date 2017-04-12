@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+	.pay{
+		position: absolute;
+		background-color: lightblue;
+		top:3em;
+		left:28em;
+		height:10em;
+		width: 30em;
+	}
+	.p1{
+		color:darkblue;
+		font-size:90px;
+		font-family: georgia;
+
+	}
+	.f1{
+		position: absolute;
+		
+		top:15em;
+		left:33em;
+		width:30em;
+		height:20em;	
+	}
+	.pay1{
+		position: absolute;
+		background-color: lightblue;
+		top:25em;
+		left:28em;
+		height:10em;
+		width: 30em;
+	}
+</style>
+</head>
+<body>
+
+<div class="pay">
+<span class="p1">Total-${{session['cost']}}</span>
+</div>
+<div class="pay1"></div>
+<form class="f1" action="/index" method="post">
+	Name on Card
+	<input type="text" name="Name",placeholder="Name on Card" value="{{request.form.Name}}"/><br/><br/>Card no.
+	<input type="text" name="cardno",placeholder="Card no." value="{{request.form.cardno}}"/><br/><br/>cvv
+	<input type="password" name="cvv",placeholder="cvv" value="{{request.form.cvv}}"/><br/><br/>
+	<input class="btn btn-default" type="submit" value="Confirm and pay">
+</form>
+
+
+
+</body>
+</html>
